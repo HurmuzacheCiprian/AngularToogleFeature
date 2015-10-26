@@ -1,0 +1,14 @@
+{
+  "name":"toogle",
+  "author":["rpopescu", "churmuzache"],
+  "dependencies": {
+
+  },
+  "devDependencies":{
+      "grunt-wiredep":"*",
+      "grunt-contrib-watch":"*",
+      "grunt-contrib-concat":"*",
+      "grunt-html2js":"*"
+  }
+
+}
