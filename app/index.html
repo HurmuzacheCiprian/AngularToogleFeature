@@ -4,16 +4,25 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
-<body ng-app="toggleLibrary">
+<body ng-app="toggle-library">
 
-
+        <div>
+            <toggle option="ON">
+                <input type="text">
+            </toggle>
+        </div>
 
 
 <!-- bower:js -->
 <script src="../lib/bower_components/jquery/dist/jquery.js"></script>
 <script src="../lib/bower_components/angular/angular.js"></script>
 <script src="../lib/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../lib/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <!-- endbower -->
+
+<script src="./app.js"></script>
+<script src="toogle/toggle.controller.js"></script>
+<script src="toogle/toggle.service.js"></script>
 
 </body>
 </html>
