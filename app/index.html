@@ -6,9 +6,20 @@
 </head>
 <body ng-app="toggle-library">
 
+        <p>some words</p>
         <div>
-            <toggle option="ON">
-                <input type="text">
+            <toggle id="myToggle" show= true >
+                    <div>
+                        <p>blablablalalalalalalaaaaa toggle 1</p>
+                    </div>
+            </toggle>
+        </div>
+
+        <div>
+            <toggle id = "toggle2" show= false>
+                <table>
+                    <tr>first row</tr>
+                </table>
             </toggle>
         </div>
 
@@ -21,7 +32,8 @@
 <!-- endbower -->
 
 <script src="./app.js"></script>
-<script src="toogle/toggle.controller.js"></script>
+<script src="./toogle/toggle.controller.js"></script>
+<script src="toogle/toogle.directive.js"></script>
 <script src="toogle/toggle.service.js"></script>
 
 </body>
