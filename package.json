@@ -8,7 +8,10 @@
       "grunt-wiredep":"*",
       "grunt-contrib-watch":"*",
       "grunt-contrib-concat":"*",
-      "grunt-html2js":"*"
+      "grunt-html2js":"*",
+      "karma":"*",
+      "karma-jasmine":"*",
+      "karma-phantomjs-launcher":"*"
   }
 
 }
