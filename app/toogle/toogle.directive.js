@@ -11,14 +11,11 @@
             controller: 'ToggleController',
             link: function (scope, element, attrs) {
                         if(scope.show === true) {
-                           // scope.buttonText = "Show";
                             console.log("true");
-                            //scope.show = "false";
                         } else {
                             console.log("false");
                             var id = scope.id;
-                            console.log(id);
-                            element.css({'display': 'none'});
+                            //element.css({'display': 'none'});
                             //scope.buttonText = "Hide";
                             ///scope.show = "true";
                         }
