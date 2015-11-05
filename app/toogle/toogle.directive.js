@@ -22,6 +22,7 @@
                         $element.addClass('ng-hide');
                     }
 
+
                 });
                 //$compile($element)($scope);
                 $scope.enableToggles = true;
