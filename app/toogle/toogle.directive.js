@@ -1,26 +1,31 @@
-(function() {
+(function () {
     var app = angular.module('toggle-library');
-    app.directive("toggle",function(){
+
+    app.directive("toggle", ['$compile', function ($compile) {
         return {
             restrict: 'E',
             scope: {
                 show: '=',
                 id: '@'
             },
-            //template: '<button class="btn btn-active" ng-click="hideElement()">{{buttonText}}</button>',
-            controller: 'ToggleController',
-            link: function (scope, element, attrs) {
-                        if(scope.show === true) {
-                            console.log("true");
-                        } else {
-                            console.log("false");
-                            var id = scope.id;
-                            //element.css({'display': 'none'});
-                            //scope.buttonText = "Hide";
-                            ///scope.show = "true";
-                        }
+            controller: function ($scope, $element) {
+                $scope.$watch(function () {
+                    //if (isLoading) {
+                    //    $element.addClass('loading');
+                    //    $element.attr('disabled', '');
+                    //} else {
+                    //    $element.removeClass('loading');
+                    //    $element.removeAttr('disabled');
+                    //}
+                    $element.attr('ng-show', $scope.show);
+                    if($scope.show == false) {
+                        $element.addClass('ng-hide');
                     }
 
+                });
+                //$compile($element)($scope);
+                $scope.enableToggles = true;
+            }
         }
-    });
+    }]);
 })();

@@ -3,32 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <script src="../lib/bower_components/angular/angular.js"></script>
 </head>
-<body ng-app="toggle-library">
-
+<body ng-cloak ng-app="toggle-library" >
         <p>some words</p>
         <div>
-            <toggle id = "toggle1" show= true>
-                    <div>
-                        <p>blablablalalalalalalaaaaa toggle 1
-                        </p>
-                    </div>
+            <toggle id = "toggle1" show="false">
+                <div>
+                    <p>blablablalalalalalalaaaaa toggle 1
+                    </p>
+                </div>
+                <ul>
+                    <li>1 toggle1</li>
+                    <li>2 toggle2</li>
+                </ul>
             </toggle>
         </div>
 
-
-        <toggle id = "toggle2" show= false>
+        <toggle id = "toggle2" show="true">
             <table>
                 <tr>first row</tr>
             </table>
             <p>paragraph1</p>
         </toggle>
 
-
-
 <!-- bower:js -->
 <script src="../lib/bower_components/jquery/dist/jquery.js"></script>
-<script src="../lib/bower_components/angular/angular.js"></script>
 <script src="../lib/bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="../lib/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <!-- endbower -->
