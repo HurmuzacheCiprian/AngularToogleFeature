@@ -1,7 +1,7 @@
 <!-- pagination container-->
 <div class="container-fluid">
     <div class="row">
-        <div class=".col-xs-6 .col-sm-4" ng-repeat="sl in Sls">
+        <div style = "margin:3px;border:3px solid green;    " class="col-xs-6 col-sm-4" ng-repeat="sl in Sls">
             {{sl}}
         </div>
     </div>
@@ -21,10 +21,10 @@
         <div class=".col-xs-6 .col-sm-1">
             <nav>
                 <ul class="pagination">
-                    <li style="cursor:pointer"><a ng-click="loadFirstPage()">First page</a></li>
-                    <li style="cursor:pointer"><a ng-repeat="page in pages">{{page}}</a></li>
-                    <li><a>Showing page {{5}} out of {{totalPages}}</a> </li>
-                    <li style="cursor:pointer"><a ng-click="loadLastPage()">Last page</a></li>
+                    <li style="cursor:pointer"><a ng-click="loadPage(1)">First page</a></li>
+                    <li style="cursor:pointer"><a ng-repeat="page in pages" ng-click="loadPage(page)">{{page}}</a></li>
+                    <li><a>Showing page {{currentPage}} out of {{totalPages}}</a> </li>
+                    <li style="cursor:pointer"><a ng-click="loadPage(totalPages)">Last page</a></li>
                 </ul>
             </nav>
         </div>

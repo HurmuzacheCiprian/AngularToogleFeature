@@ -5,37 +5,71 @@
     var app = angular.module('toggle-library');
 
     var slMocks = ['sl-invest','sl-test','sl-menu','sl-dashboard','sl-administration','sl-log','sl-logmerge'];
-    var perPages = [3,5,10];
+    var perPages = [3,5,10],
+        originalArray;
 
     var controller = function($scope) {
 
         //initialisations
-        $scope.perPages = perPages;
-        $scope.total = slMocks.length;
         $scope.currentPerPage = 3;
-        $scope.currentPage; //TODO
-        $scope.totalPages = getTotalPages($scope.currentPerPage);
-        $scope.Sls = slMocks;
+        $scope.currentPage;
         //end
+
+        init();
+
+        //TODO investigate at load, page 1 is not loaded by default;
+
+        function init() {
+            if($scope.perPages == undefined || $scope.perPages == null) {
+                $scope.perPages = perPages;
+                $scope.totalPages = getTotalPages($scope.currentPerPage);
+                    $scope.currentPerPage=3;
+                $scope.currentPage=1;
+                $scope.total = slMocks.length;
+                $scope.pages = getTotalPagesPerPage($scope.totalPages);
+                originalArray = slMocks;
+                $scope.Sls = getPaginatedElements(1,3,$scope.total);
+
+            }
+        }
 
         $scope.getTotalPagesByPerPageSelection = function(perPage) {
             $scope.currentPerPage = perPage;
+            $scope.currentPage = 1;
             $scope.totalPages = getTotalPages(perPage);
+            $scope.pages = getTotalPagesPerPage($scope.totalPages);
+            $scope.Sls = getPaginatedElements(1,perPage,$scope.total);
+        };
 
+        $scope.loadPage = function (currentPage) {
+            $scope.currentPage = currentPage;
+
+            var total = $scope.total,
+                perPage = $scope.currentPerPage,
+                startIdx;
+            $scope.Sls = getPaginatedElements(currentPage, $scope.currentPerPage, $scope.total);
+        };
+
+        function getPaginatedElements(currentPage, perPage, total) {
+            var startIdx;
+
+            startIdx = (currentPage-1) * perPage;
+
+            var arr = createNewArray(originalArray);
+            return arr.splice(startIdx,perPage);
+        }
+
+        function getTotalPagesPerPage(totalPages) {
             var count = 0,
-                aux = $scope.totalPages,
+                aux = totalPages,
                 arr = [];
 
-                do {
-                    arr.push(++count);
-                } while(count < aux);
-            $scope.pages = arr;
-            console.log('DEBUG ',arr);
-        };
+            do {
+                arr.push(++count);
+            } while(count < aux);
 
-        $scope.loadPage = function () {
-
-        };
+            return arr;
+        }
 
         /**
          * Get total pages based on total result list and perPage selection
@@ -55,19 +89,11 @@
             }
         }
 
-        $scope.loadFirstPage = function() {
-          //TODO
-        };
+        function createNewArray(arr) {
+            return arr.slice();
+        }
 
-        function loadPerPage(perPage,totalPages) {
-
-        };
-
-        $scope.loadLastPage = function() {
-            //TODO
-        };
     };
-
     app.directive('paginate', function() {
         return {
             restrict: 'E',
@@ -75,5 +101,4 @@
             controller:controller
         };
     });
-
 })();
