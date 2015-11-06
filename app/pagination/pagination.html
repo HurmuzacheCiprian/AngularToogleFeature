@@ -1,24 +1,32 @@
 <!-- pagination container-->
-<div class="row">
-    <div class="col-md-2">
-        <nav>
-            <ul class="pagination">
-                <li>
-                    <a clas="page" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                    <a href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
+<div class="container-fluid">
+    <div class="row">
+        <div class=".col-xs-6 .col-sm-4" ng-repeat="sl in Sls">
+            {{sl}}
+        </div>
+    </div>
+    <div class="row">
+        <!-- Single button -->
+
+        <div class="btn-group">
+             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Per page {{currentPerPage}} <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a ng-repeat="perPage in perPages" ng-click="getTotalPagesByPerPageSelection(perPage)">{{perPage}}</a></li>
             </ul>
-        </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class=".col-xs-6 .col-sm-1">
+            <nav>
+                <ul class="pagination">
+                    <li style="cursor:pointer"><a ng-click="loadFirstPage()">First page</a></li>
+                    <li style="cursor:pointer"><a ng-repeat="page in pages">{{page}}</a></li>
+                    <li><a>Showing page {{5}} out of {{totalPages}}</a> </li>
+                    <li style="cursor:pointer"><a ng-click="loadLastPage()">Last page</a></li>
+                </ul>
+            </nav>
+        </div>
     </div>
 </div>
