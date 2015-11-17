@@ -17,8 +17,6 @@
 
         init();
 
-        //TODO investigate at load, page 1 is not loaded by default;
-
         function init() {
             if($scope.perPages == undefined || $scope.perPages == null) {
                 $scope.perPages = perPages;
